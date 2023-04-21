@@ -1,0 +1,22 @@
+{
+  "name": "syk_mart",
+  "version": "1.0.0",
+  "description": "Phone Online store",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kirushanshan/syk-mart.git"
+  },
+  "author": "SYK",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kirushanshan/syk-mart/issues"
+  },
+  "homepage": "https://github.com/kirushanshan/syk-mart#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
