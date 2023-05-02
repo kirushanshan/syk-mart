@@ -4,6 +4,7 @@ import { Button, Form } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import FormContainer from '../commponents/FormContainer'
 import { saveShippingAddress } from '../actions/cartAction'
+import CheckoutSteps from '../commponents/CheckoutSteps'
 
 const ShippingPage = ({ history }) => {
   const navigate = useNavigate()
@@ -25,6 +26,7 @@ const ShippingPage = ({ history }) => {
 
   return (
     <FormContainer>
+      <CheckoutSteps step1 step2 />
       <h1>Shipping</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group controlId="address">
