@@ -8,6 +8,7 @@ import RegisterPage from '../pages/RegisterPage'
 import ProfilePage from '../pages/ProfilePage'
 import ShippingPage from '../pages/ShippingPage'
 import PaymentPage from '../pages/PaymentPage'
+import PlaceOrderPage from '../pages/PlaceOrderPage'
 
 export const routes = [
   {
@@ -22,6 +23,7 @@ export const routes = [
       { path: '/register', element: <RegisterPage /> },
       { path: '/profile', element: <ProfilePage /> },
       { path: '/payment', element: <PaymentPage /> },
+      { path: '/placeorder', element: <PlaceOrderPage /> },
     ],
   },
 ]
