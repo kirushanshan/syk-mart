@@ -4,8 +4,8 @@ import { Button, Form, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../commponents/message'
 import Loader from '../commponents/loader'
-import { register } from '../actions/userAction'
 import FormContainer from '../commponents/FormContainer'
+import { register } from '../actions/userAction'
 
 const RegisterPage = () => {
   const [email, setEmail] = useState('')

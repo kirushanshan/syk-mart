@@ -6,6 +6,7 @@ import CartPage from '../pages/CartPage'
 import LoginPage from '../pages/LoginPage'
 import RegisterPage from '../pages/RegisterPage'
 import ProfilePage from '../pages/ProfilePage'
+import ShippingPage from '../pages/ShippingPage'
 
 export const routes = [
   {
@@ -13,8 +14,9 @@ export const routes = [
     element: <App />,
     children: [
       { path: '', element: <HomePage /> },
-      { path: 'product/:id', element: <ProductPage /> },
+      { path: '/shipping', element: <ShippingPage /> },
       { path: 'login', element: <LoginPage /> },
+      { path: 'product/:id', element: <ProductPage /> },
       { path: '/cart/:id?', element: <CartPage /> },
       { path: '/register', element: <RegisterPage /> },
       { path: '/profile', element: <ProfilePage /> },
