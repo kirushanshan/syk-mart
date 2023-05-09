@@ -25,7 +25,7 @@ export const routes = [
       { path: '/profile', element: <ProfilePage /> },
       { path: '/payment', element: <PaymentPage /> },
       { path: '/placeorder', element: <PlaceOrderPage /> },
-      { path: '/orders/:id', element: <OrderPage /> },
+      { path: '/order/:id', element: <OrderPage /> },
     ],
   },
 ]
