@@ -1,32 +1,41 @@
 import asyncHandler from 'express-async-handler'
 import Product from '../models/productModel.js'
 
-
 // @desc Fetch all products
 // @route Get /api/products
 // @access Fetch public
-const getProducts = asyncHandler (async (req, res)  => {
-    const products = await Product.find({})
-    res.json(products)
+const getProducts = asyncHandler(async (req, res) => {
+  const products = await Product.find({})
+  res.json(products)
 })
-
 
 // @desc Fetch Single  products by id
 // @route Get /api/products/:id
 // @access Fetch public
-const getProductById = asyncHandler (async (req, res)  => {
-    const product = await Product.findById(req.params.id)
+const getProductById = asyncHandler(async (req, res) => {
+  const product = await Product.findById(req.params.id)
 
-    if(product) {
-        res.json(product)      
-    } 
-    else {
-        res.status(404)
-        throw new Error ('Product not found')
-    }
+  if (product) {
+    res.json(product)
+  } else {
+    res.status(404)
+    throw new Error('Product not found')
+  }
 })
 
+// @desc Delete product by id
+// @route DELETE /api/products/:id
+// @access private/admn
+const deleteProduct = asyncHandler(async (req, res) => {
+  const product = await Product.findById(req.params.id)
 
-export {
-    getProducts, getProductById
-}
+  if (product) {
+    await product.deleteOne()
+    res.json({ message: 'Product Removed' })
+  } else {
+    res.status(404)
+    throw new Error('Product not found')
+  }
+})
+
+export { getProducts, getProductById, deleteProduct }
