@@ -11,6 +11,7 @@ import PaymentPage from '../pages/PaymentPage'
 import PlaceOrderPage from '../pages/PlaceOrderPage'
 import OrderPage from '../pages/OrderPage'
 import UserListPage from '../pages/UserListPage'
+import UserEditPage from '../pages/UserEditPage'
 
 export const routes = [
   {
@@ -28,6 +29,7 @@ export const routes = [
       { path: '/placeorder', element: <PlaceOrderPage /> },
       { path: '/order/:id', element: <OrderPage /> },
       { path: '/admin/userlist', element: <UserListPage /> },
+      { path: '/admin/user/:id/edit', element: <UserEditPage /> },
     ],
   },
 ]
