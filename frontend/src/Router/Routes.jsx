@@ -13,6 +13,7 @@ import OrderPage from '../pages/OrderPage'
 import UserListPage from '../pages/UserListPage'
 import UserEditPage from '../pages/UserEditPage'
 import ProductListPage from '../pages/ProductListPage'
+import ProductEditPage from '../pages/ProductEditPage'
 
 export const routes = [
   {
@@ -32,6 +33,7 @@ export const routes = [
       { path: '/admin/userlist', element: <UserListPage /> },
       { path: '/admin/user/:id/edit', element: <UserEditPage /> },
       { path: '/admin/productlist', element: <ProductListPage /> },
+      { path: '/admin/product/:id/edit', element: <ProductEditPage /> },
     ],
   },
 ]
