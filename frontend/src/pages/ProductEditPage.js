@@ -6,7 +6,8 @@ import Message from '../commponents/message'
 import Loader from '../commponents/loader'
 import FormContainer from '../commponents/FormContainer'
 import { LinkContainer } from 'react-router-bootstrap'
-import { listProductDetails } from '../actions/productAction'
+import { listProductDetails, updateProduct } from '../actions/productAction'
+import { PRODUCT_UPDATE_RESET } from '../constrants/productConstrants'
 
 const ProductEditPage = () => {
   const { id: productId } = useParams()
@@ -25,23 +26,46 @@ const ProductEditPage = () => {
   const productDetails = useSelector((state) => state.productDetails)
   const { loading, error, product } = productDetails
 
+  const productUpdate = useSelector((state) => state.productUpdate)
+  const {
+    loading: loadingProductUpdate,
+    error: errorProductUpdate,
+    success: successProductUpdate,
+  } = productUpdate
+
   useEffect(() => {
-    if (!product.name || product._id !== productId) {
-      dispatch(listProductDetails(productId))
+    if (successProductUpdate) {
+      dispatch({ type: PRODUCT_UPDATE_RESET })
+      navigate('/admin/productlist')
     } else {
-      setName(product.name)
-      setPrice(product.price)
-      setImage(product.image)
-      setBrand(product.Brand)
-      setCategory(product.category)
-      setCountInStock(product.countInStock)
-      setDescription(product.description)
+      if (!product.name || product._id !== productId) {
+        dispatch(listProductDetails(productId))
+      } else {
+        setName(product.name)
+        setPrice(product.price)
+        setImage(product.image)
+        setBrand(product.Brand)
+        setCategory(product.category)
+        setCountInStock(product.countInStock)
+        setDescription(product.description)
+      }
     }
-  }, [dispatch, navigate, product, productId])
+  }, [dispatch, navigate, product, productId, successProductUpdate])
 
   const submitHandler = (e) => {
     e.preventDefault()
-    // update product
+    dispatch(
+      updateProduct({
+        _id: productId,
+        name,
+        price,
+        image,
+        brand,
+        category,
+        description,
+        countInStock,
+      })
+    )
   }
 
   return (
@@ -51,6 +75,10 @@ const ProductEditPage = () => {
       </Link>
       <FormContainer>
         <h1>Edit Product</h1>
+        {loadingProductUpdate && <Loader />}
+        {errorProductUpdate && (
+          <Message variant="danger">{errorProductUpdate}</Message>
+        )}
         {loading ? (
           <Loader />
         ) : error ? (
