@@ -10,6 +10,7 @@ import ShippingPage from '../pages/ShippingPage'
 import PaymentPage from '../pages/PaymentPage'
 import PlaceOrderPage from '../pages/PlaceOrderPage'
 import OrderPage from '../pages/OrderPage'
+import UserPage from '../pages/UserPage'
 
 export const routes = [
   {
@@ -26,6 +27,7 @@ export const routes = [
       { path: '/payment', element: <PaymentPage /> },
       { path: '/placeorder', element: <PlaceOrderPage /> },
       { path: '/order/:id', element: <OrderPage /> },
+      { path: '/admin/userlist', element: <UserPage /> },
     ],
   },
 ]
