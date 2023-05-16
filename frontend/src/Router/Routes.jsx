@@ -16,6 +16,7 @@ import ProductListPage from '../pages/ProductListPage'
 import ProductEditPage from '../pages/ProductEditPage'
 import OrderListPage from '../pages/OrderListPage'
 import SearchBox from '../commponents/SearchBox'
+import ProductCarousel from '../commponents/ProductCarousel'
 
 export const routes = [
   {
@@ -26,7 +27,7 @@ export const routes = [
       { path: '/page/:pageNumber', element: <HomePage /> },
       { path: '/search/:keyword/page/:pageNumber', element: <HomePage /> },
       { path: '', element: <HomePage /> },
-      { path: '/test', element: <SearchBox /> },
+      { path: '/test', element: <ProductCarousel /> },
       { path: '/shipping', element: <ShippingPage /> },
       { path: 'login', element: <LoginPage /> },
       { path: 'product/:id', element: <ProductPage /> },
