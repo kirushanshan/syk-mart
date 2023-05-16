@@ -15,12 +15,15 @@ import UserEditPage from '../pages/UserEditPage'
 import ProductListPage from '../pages/ProductListPage'
 import ProductEditPage from '../pages/ProductEditPage'
 import OrderListPage from '../pages/OrderListPage'
+import SearchBox from '../commponents/SearchBox'
 
 export const routes = [
   {
     path: '/',
     element: <App />,
     children: [
+      { path: '/search/:keyword', element: <HomePage /> },
+      { path: '/test', element: <SearchBox /> },
       { path: '', element: <HomePage /> },
       { path: '/shipping', element: <ShippingPage /> },
       { path: 'login', element: <LoginPage /> },
