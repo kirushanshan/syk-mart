@@ -37,4 +37,13 @@ const admin = (req, res, next) => {
   }
 }
 
-export { protect, admin }
+const shopOwner = (req, res, next) => {
+  if (req.user && req.user.isShopOwner) {
+    next()
+  } else {
+    res.status(401)
+    throw new Error('Not authorized as an shop owner')
+  }
+}
+
+export { protect, admin, shopOwner }

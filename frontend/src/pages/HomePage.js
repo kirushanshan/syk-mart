@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import Meta from '../commponents/Meta'
+import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { Row, Col } from 'react-bootstrap'
@@ -24,7 +26,21 @@ const HomePage = () => {
 
   return (
     <>
-      {!keyword && <ProductCarousel />}
+      <Meta
+        title={'Welcome to syk-mart'}
+        description={'we sell the best products for chep'}
+        keywords={
+          'electronics, buy electronic,chep price , chep electronic , northern , jaffna, jaffna people'
+        }
+      />
+      {!keyword ? (
+        <ProductCarousel />
+      ) : (
+        <Link to="/" className="btn btn-light">
+          {' '}
+          Go Back{' '}
+        </Link>
+      )}
       <h1>Latest Products</h1>
       {loading ? (
         <Loader />

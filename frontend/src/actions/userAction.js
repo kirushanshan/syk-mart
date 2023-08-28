@@ -23,6 +23,9 @@ import {
   USER_UPDATE_REQUEST,
   USER_UPDATE_SUCCESS,
   USER_UPDATE_FAIL,
+  SHOP_REGISTER_REQUEST,
+  SHOP_REGISTER_SUCCESS,
+  SHOP_REGISTER_FAIL,
 } from '../constrants/userConstrants'
 import { ORDER_LIST_MY_RESET } from '../constrants/orderConstants'
 
@@ -109,6 +112,41 @@ export const register = (name, email, password) => async (dispatch) => {
   }
 }
 
+export const registerShop =
+  (name, registerNumber, image, shopDetails, email, password) =>
+  async (dispatch) => {
+    try {
+      dispatch({
+        type: SHOP_REGISTER_REQUEST,
+      })
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+
+      const { data } = await axios.post(
+        '/api/shop',
+        { name, email, password, registerNumber, shopDetails, image },
+        config
+      )
+
+      dispatch({
+        type: SHOP_REGISTER_SUCCESS,
+        payload: data,
+      })
+    } catch (error) {
+      dispatch({
+        type: SHOP_REGISTER_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      })
+    }
+  }
+
 export const getUserDetails = (id) => async (dispatch, getState) => {
   try {
     dispatch({
@@ -165,6 +203,13 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
       type: USER_UPDATE_PROFILE_SUCCESS,
       payload: data,
     })
+
+    dispatch({
+      type: USER_LOGIN_SUCCESS,
+      payload: data,
+    })
+
+    localStorage.setItem('userInfo', JSON.stringify(data))
   } catch (error) {
     dispatch({
       type: USER_UPDATE_PROFILE_FAIL,

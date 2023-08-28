@@ -7,8 +7,11 @@ import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 import connectDB from './config/db.js'
 import productRoutes from './routes/productRoutes.js'
 import userRoutes from './routes/userRoutes.js'
+import shopRoutes from './routes/shopRoutes.js'
 import orderRoutes from './routes/orderRoutes.js'
 import uploadRoutes from './routes/uploadRoutes.js'
+import categoryRoutes from './routes/categoryRoutes.js'
+import brandRoutes from './routes/brandRoutes.js'
 import { constants } from 'buffer'
 
 dotenv.config()
@@ -24,8 +27,8 @@ if (process.env.NODE_ENV === 'development') {
 app.use(express.json())
 
 // app.use((req, res, next) => {
-//     console.log(req.originalUrl)
-//     next()
+//   console.log(req.originalUrl)
+//   next()
 // })
 
 app.get('/', (req, res) => {
@@ -34,6 +37,9 @@ app.get('/', (req, res) => {
 
 app.use('/api/products', productRoutes)
 app.use('/api/users', userRoutes)
+app.use('/api/shops', shopRoutes)
+app.use('/api/category', categoryRoutes)
+app.use('/api/brand', brandRoutes)
 app.use('/api/orders', orderRoutes)
 app.use('/api/upload', uploadRoutes)
 

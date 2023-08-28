@@ -25,6 +25,9 @@ import {
   USER_UPDATE_SUCCESS,
   USER_UPDATE_FAIL,
   USER_UPDATE_RESET,
+  SHOP_REGISTER_REQUEST,
+  SHOP_REGISTER_SUCCESS,
+  SHOP_REGISTER_FAIL,
 } from '../constrants/userConstrants'
 
 export const userLoginReducer = (state = {}, action) => {
@@ -55,6 +58,19 @@ export const userRegisterReducer = (state = {}, action) => {
   }
 }
 
+export const shopRegisterReducer = (state = {}, action) => {
+  switch (action.type) {
+    case SHOP_REGISTER_REQUEST:
+      return { loading: true }
+    case SHOP_REGISTER_SUCCESS:
+      return { loading: false, shopInfo: action.payload }
+    case SHOP_REGISTER_FAIL:
+      return { loading: false, error: action.payload }
+    default:
+      return state
+  }
+}
+
 export const userDetailsReducer = (state = { user: {} }, action) => {
   switch (action.type) {
     case USER_DETAILS_REQUEST:
@@ -79,7 +95,7 @@ export const userUpdateProfileReducer = (state = {}, action) => {
     case USER_UPDATE_PROFILE_FAIL:
       return { loading: false, error: action.payload }
     case USER_UPDATE_PROFILE_RESET:
-      return null
+      return {}
     default:
       return state
   }

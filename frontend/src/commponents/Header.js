@@ -24,14 +24,17 @@ const Header = () => {
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <SearchBox />
+            <Nav>
+              <SearchBox />
+            </Nav>
             <Nav className="ml-auto">
               <LinkContainer to="/cart">
                 <Nav.Link>
                   {' '}
                   <i className="fas fa-shopping-cart"></i> Cart
                 </Nav.Link>
-              </LinkContainer>
+              </LinkContainer>{' '}
+              *{' '}
               {userInfo ? (
                 <NavDropdown title={userInfo.name} id="username">
                   <LinkContainer to="/profile">
@@ -58,6 +61,9 @@ const Header = () => {
                   </LinkContainer>
                   <LinkContainer to="/admin/orderlist">
                     <NavDropdown.Item>Orders</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="/admin/create/shop">
+                    <NavDropdown.Item>Create Shop</NavDropdown.Item>
                   </LinkContainer>
                   <NavDropdown.Item onClick={logoutHandler}>
                     Logout

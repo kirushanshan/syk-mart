@@ -18,6 +18,7 @@ const ProductEditPage = () => {
   const [image, setImage] = useState('')
   const [brand, setBrand] = useState('')
   const [category, setCategory] = useState('')
+  const [type, setType] = useState('')
   const [countInStock, setCountInStock] = useState(0)
   const [description, setDescription] = useState('')
   const [uploading, setUploading] = useState(false)
@@ -148,7 +149,17 @@ const ProductEditPage = () => {
             </Form.Group>
             {uploading && <Loader />}
 
-            <Form.Group controlId="brand">
+            {/* <Form.Group controlId="brand">
+              <Form.Label>used</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter brand"
+                value={brand}
+                onChange={(e) => setBrand(e.target.value)}
+              ></Form.Control>
+            </Form.Group> */}
+
+            {/* <Form.Group controlId="brand">
               <Form.Label>Brand</Form.Label>
               <Form.Control
                 type="text"
@@ -158,7 +169,58 @@ const ProductEditPage = () => {
               ></Form.Control>
             </Form.Group>
 
+            <Form.Group controlId="brand">
+              <Form.Label>Brand</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter brand"
+                value={brand}
+                onChange={(e) => setBrand(e.target.value)}
+              ></Form.Control>
+            </Form.Group> */}
+
+            <Form.Group controlId="type">
+              <Form.Label>Product Type</Form.Label>
+              <Form.Control
+                as="select"
+                value={type}
+                onChange={(e) => setType(e.target.value)}
+              >
+                <option value="new">New</option>
+                <option value="used">Used</option>
+              </Form.Control>
+            </Form.Group>
+
             <Form.Group controlId="category">
+              <Form.Label>Product Category</Form.Label>
+              <Form.Control
+                as="select"
+                value={category}
+                onChange={(e) => setBrand(e.target.value)}
+              >
+                <option value="phone">Phone</option>
+                <option value="bluetoothmouse">Bluetooth Mouse</option>
+                <option value="bluetoothSpeaker">Bluetooth Speaker</option>
+              </Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId="brand">
+              <Form.Label>Product Brand</Form.Label>
+              <Form.Control
+                as="select"
+                value={brand}
+                onChange={(e) => setBrand(e.target.value)}
+              >
+                <option value="samsung">Samsung</option>
+                <option value="nokia">Nokia</option>
+                <option value="apple">Apple</option>
+                <option value="logitech">Logitech</option>
+
+                {/* Add more options as needed */}
+              </Form.Control>
+            </Form.Group>
+
+            {/* <Form.Group controlId="category">
               <Form.Label>Category</Form.Label>
               <Form.Control
                 type="text"
@@ -166,7 +228,7 @@ const ProductEditPage = () => {
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               ></Form.Control>
-            </Form.Group>
+            </Form.Group> */}
 
             <Form.Group controlId="countInStock">
               <Form.Label>Count In Stock</Form.Label>

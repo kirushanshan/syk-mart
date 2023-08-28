@@ -99,6 +99,7 @@ const ProductListPage = () => {
                 <th>ID</th>
                 <th>Name</th>
                 <th>Price</th>
+                <th>Type</th>
                 <th>Category</th>
                 <th>Brand</th>
                 <th></th>
@@ -110,6 +111,7 @@ const ProductListPage = () => {
                   <td>{product._id}</td>
                   <td>{product.name}</td>
                   <td>{product.price}</td>
+                  <td>{product.type}</td>
                   <td>{product.category} </td>
                   <td>{product.brand} </td>
                   <td>

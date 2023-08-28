@@ -5,6 +5,7 @@ import { Row, Col, Image, ListGroup, Card, Button, Form } from 'react-bootstrap'
 import Rating from '../commponents/Rating'
 import Message from '../commponents/message'
 import Loader from '../commponents/loader'
+import Meta from '../commponents/Meta'
 import {
   listProductDetails,
   createProductReview,
@@ -71,6 +72,7 @@ const ProductPage = ({ history }) => {
         <Message variant="danger">{error}</Message>
       ) : (
         <>
+          <Meta title={product.name} />
           <Row>
             <Col md={6}>
               <Image src={product.image} alt={product.name} fluid />
@@ -86,7 +88,7 @@ const ProductPage = ({ history }) => {
                     text={`${product.numReviews} reviews`}
                   />
                 </ListGroup.Item>
-                <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
+                <ListGroup.Item>Price: RS {product.price}</ListGroup.Item>
                 <ListGroup.Item>
                   Description: {product.description}
                 </ListGroup.Item>
@@ -99,7 +101,7 @@ const ProductPage = ({ history }) => {
                     <Row>
                       <Col>Price:</Col>
                       <Col>
-                        <strong>${product.price} </strong>
+                        <strong>RS {product.price} </strong>
                       </Col>
                     </Row>
                   </ListGroup.Item>

@@ -7,6 +7,7 @@ import Message from '../commponents/message'
 import Loader from '../commponents/loader'
 import { getUserDetails, updateUserProfile } from '../actions/userAction'
 import { listMyOrders } from '../actions/orderAction'
+import { USER_UPDATE_PROFILE_RESET } from '../constrants/userConstrants'
 
 const ProfilePage = () => {
   const [email, setEmail] = useState('')
@@ -35,7 +36,8 @@ const ProfilePage = () => {
     if (!userInfo) {
       navigate('/login')
     } else {
-      if (!user.name) {
+      if (!user || !user.name || success) {
+        dispatch({ type: USER_UPDATE_PROFILE_RESET })
         dispatch(getUserDetails('profile'))
         dispatch(listMyOrders())
       } else {
@@ -43,7 +45,7 @@ const ProfilePage = () => {
         setEmail(user.email)
       }
     }
-  }, [navigate, userInfo, dispatch, user])
+  }, [navigate, userInfo, dispatch, user, success])
 
   const submitHandler = (e) => {
     e.preventDefault()
